@@ -1,51 +1,86 @@
 #include<iostream>
 using namespace std;
 
-class weather_report
+class Weather_report
 {
-	int high_temp,low_temp,a_rain,a_snow;
-	string day_of_month;
-	public:
-	void data();
-	void display();
-	
-	weather_report() //constructor
-	{
-		day_of_month="sunday"; //default
-		high_temp=999;
-		low_temp=999;
-		a_rain=0;//amount of rain
-		a_snow=0;
-			
-	}
+
+int day[20],d,ht[20],lt[20],ar[20],as[15],i,total,t=0,tt=0,to=0,tot=0,avr,avg=0,x,y,z,j;
+
+public:
+
+void data()
+{
+cout<<"How many day data you want to add in report :";
+cin>>d;
+
+for(i=1;i<=d;i++)
+{
+cout<<"Enter a day of month : ";
+cin>>day[i];
+cout<<"Enter a high temp. : ";
+cin>>ht[i];
+cout<<"Enter a low temprature : ";
+cin>>lt[i];
+cout<<"Enter amount of rain : ";
+cin>>ar[i];
+cout<<"Enter the amount of snow : ";
+cin>>as[i];
+cout<<endl;
+} 
+}
+
+void display()
+{
+for(i=1;i<=d;i++)
+{
+cout<<"A day of month is : "<<day[i]<<endl;
+cout<<"A high temp. is : "<<ht[i]<<endl;
+cout<<"Low temprature is : "<<lt[i]<<endl;
+cout<<"Amount of rain is : "<<ar[i]<<endl;
+cout<<"The amount of snow is : "<<as[i]<<endl;
+cout<<endl;
+
+//total=total+day[j];
+tot=tot+ht[i];
+to=to+lt[i];
+tt=tt+ar[i];
+t=t+as[i];
+}	
+
+
+avg=(tot/d);
+x=(to/d);
+y=(tt/d);
+z=(t/d);
+
+cout<<"Day |"<<"\t"<<"high temp |"<<"\t"<<"low temp |"<<"\t"<<"Amount of rain |"<<"\t"<<"Amount snow "<<endl;
+for(i=1;i<=d;i++) 
+{
+cout<<day[i]<<"\t"<<ht[i]<<"\t\t"<<lt[i]<<"\t\t"<<ar[i]<<"\t\t\t"<<as[i]<<endl;
+}
+cout<<"avr"<<"\t"<<avg<<"\t\t"<<x<<"\t\t"<<y<<"\t\t\t"<<z<<endl;
+cout<<endl;
+}
+
+
+/*Weather_report()
+{
+day=99;
+ht=999;
+lt=999;
+ar=0;
+as=0;
+}*/
+
 };
 
-void weather_report::data()
-{
-	cout<<"Enter the day of month :";
-	cin>>day_of_month;
-	cout<<"Enter the high temp : ";
-	cin>>high_temp;
-	//cout<<"Enter the low temp : ";
-	//cin>>low_temp;
-	cout<<"Enter the amount of rain : ";
-	cin>>a_rain;
-	cout<<"Enter the amount of snow : ";
-	cin>>a_snow;
-	cout<<endl;
-}
-void weather_report::display()
-{
-	cout<<"The day of month : "<<day_of_month<<endl;
-	cout<<"The high temp is :"<<high_temp<<endl;
-	cout<<"The low temp is :"<<low_temp<<endl;
-	cout<<"The amount of rain : "<<a_rain<<endl;
-	cout<<"The amount of snow : "<<a_snow<<endl;
-}
+
 int main()
 {
-	 weather_report obj;
-	 obj.data();
-	 obj.display();
-	 return 0;
+Weather_report a;
+a.data();
+a.display();
+return 0;
 }
+
+
